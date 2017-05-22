@@ -30,12 +30,12 @@ from .exceptions import AuthError, ReqError, InvalidToken, APIError
 from .config import ServerAuthConfig, ClientAuthConfig, GlobalConfig
 
 if PY2:  # pragma: no cover
-    from urlparse import urlparse, parse_qs, urljoin
-    from anydbm import error as db_error
+    from urllib.parse import urlparse, parse_qs, urljoin
+    from dbm import error as db_error
 
 else:  # pragma: no cover
     from urllib.parse import urlparse, parse_qs, urljoin
-    from dbm import error as db_error
+    from dbm.ndbm import error as db_error
 
 logger = logging.getLogger(__name__)
 

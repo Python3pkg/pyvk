@@ -9,8 +9,7 @@
     :license: MIT, see LICENSE for more details.
 """
 
-from __future__ import generators, with_statement, print_function, \
-    unicode_literals, absolute_import
+
 
 import logging
 import requests
@@ -23,7 +22,7 @@ from .exceptions import ReqError, APIError
 from .utils import PY2, process_args, setup_logger, DictNamedTuple
 
 if PY2:  # pragma: no cover
-    from urllib import urlencode
+    from urllib.parse import urlencode
 else:    # pragma: no cover
     from urllib.parse import urlencode
 

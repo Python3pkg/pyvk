@@ -49,7 +49,7 @@ def reqn(partial_call, n=None, batch_size=None, **api_method_args):
         else takewhile(lambda x: x < n, offsets_all)
 
     # (offset,size)-schedule
-    schedule = zip(offsets, sizes_shedule)
+    schedule = list(zip(offsets, sizes_shedule))
 
     if n is not None:
         # If `n' is set, change the last step to request exactly `n' items.

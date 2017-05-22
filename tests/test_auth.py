@@ -1,5 +1,4 @@
-from __future__ import generators, with_statement, print_function, \
-    unicode_literals, absolute_import
+
 
 
 import mock
@@ -14,7 +13,7 @@ from pyvk import ClientAuth, ServerAuth
 from tests.utils import *
 
 if PY2:
-    from urlparse import urlparse, parse_qsl
+    from urllib.parse import urlparse, parse_qsl
     from exceptions import IOError
 else:
     from urllib.parse import urlparse, parse_qsl

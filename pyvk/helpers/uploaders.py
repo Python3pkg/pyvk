@@ -28,12 +28,12 @@ class _Uploader(object):
 
             uploaded = requests.post(self._server['upload_url'],
                                      files={field: data})
-            print(uploaded.json())
+            print((uploaded.json()))
 
         if self._save:
             args = {}
             if self._argsmap:
-                for k_args, k_response in self._argsmap.items():
+                for k_args, k_response in list(self._argsmap.items()):
                     args[k_args] = uploaded.json()[k_response]
             else:
                 args.update(uploaded.json())

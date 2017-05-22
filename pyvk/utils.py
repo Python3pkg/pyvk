@@ -20,7 +20,7 @@ PY3 = sys.version_info[0] == 3
 
 
 if PY2:  # pragma: no cover
-    from itertools import izip
+    
     input = raw_input
     zip = izip
 else:  # pragma: no cover
@@ -44,8 +44,7 @@ def accumulate(iterable):
 
 def filter_dict(d):
     # Remove None values
-    return dict(filter(lambda x: x[1] is not None,
-                       d.items()))
+    return dict([x for x in list(d.items()) if x[1] is not None])
 
 
 def process_args(args):
@@ -60,7 +59,7 @@ def process_args(args):
         else:
             return item
 
-    return filter_dict(dict((k, convert(v)) for k, v in args.items()))
+    return filter_dict(dict((k, convert(v)) for k, v in list(args.items())))
 
 
 def setup_logger(config):
@@ -143,7 +142,7 @@ class Config(DictNamedTuple):
                             self.__class__.__mro__)
 
         for cls in classes:
-            for key, value in cls.__dict__.items():
+            for key, value in list(cls.__dict__.items()):
                 if not key.startswith('_'):
                     new_params[key] = params.get(key, value)
 

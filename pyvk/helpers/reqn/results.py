@@ -194,7 +194,7 @@ class ResultFriendsGetMutual(_Result):
         self.multiple = bool(args.get('target_uids', False))
 
         if self.multiple:
-            uids = filter(lambda x: x > 0, map(int, args['target_uids']))
+            uids = [x for x in map(int, args['target_uids']) if x > 0]
             self.result = [{'id': uid, 'common_friends': [], 'common_count': 0}
                            for uid in uids]
         else:

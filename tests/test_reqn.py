@@ -22,7 +22,7 @@ def fetch_and_compare(method, args, n, batch_size):
     if type(rb) is dict:
         assert set(rb.keys()) == set(rn.keys())
 
-        for k in rb.keys():
+        for k in list(rb.keys()):
             if type(rb[k]) is list:
                 try:
                     ids_b = [e['id'] for e in rb[k]]
